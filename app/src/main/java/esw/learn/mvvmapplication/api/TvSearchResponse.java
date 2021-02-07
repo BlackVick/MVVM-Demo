@@ -1,8 +1,8 @@
-package esw.learn.mvvmapplication.Api;
+package esw.learn.mvvmapplication.api;
 
 import java.util.List;
 
-import esw.learn.mvvmapplication.Models.TvShow;
+import esw.learn.mvvmapplication.models.TvShow;
 
 public class TvSearchResponse {
 

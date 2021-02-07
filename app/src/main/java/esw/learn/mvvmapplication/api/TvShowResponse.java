@@ -1,6 +1,6 @@
-package esw.learn.mvvmapplication.Api;
+package esw.learn.mvvmapplication.api;
 
-import esw.learn.mvvmapplication.Models.TvShowDetail;
+import esw.learn.mvvmapplication.models.TvShowDetail;
 
 public class TvShowResponse {
 

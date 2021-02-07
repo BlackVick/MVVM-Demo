@@ -1,4 +1,4 @@
-package esw.learn.mvvmapplication.Api;
+package esw.learn.mvvmapplication.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

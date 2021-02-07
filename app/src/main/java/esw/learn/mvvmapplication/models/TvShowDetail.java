@@ -1,4 +1,4 @@
-package esw.learn.mvvmapplication.Models;
+package esw.learn.mvvmapplication.models;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package esw.learn.mvvmapplication.ViewModels;
+package esw.learn.mvvmapplication.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import esw.learn.mvvmapplication.Api.TvResponse;
-import esw.learn.mvvmapplication.Repositories.TvShowsRepository;
+import esw.learn.mvvmapplication.api.TvResponse;
+import esw.learn.mvvmapplication.repositories.TvShowsRepository;
 
 public class TvShowViewModel extends ViewModel {
 

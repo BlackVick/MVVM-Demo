@@ -1,12 +1,12 @@
-package esw.learn.mvvmapplication.Repositories;
+package esw.learn.mvvmapplication.repositories;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import esw.learn.mvvmapplication.Api.Api;
-import esw.learn.mvvmapplication.Api.RetrofitClient;
-import esw.learn.mvvmapplication.Api.TvResponse;
+import esw.learn.mvvmapplication.api.Api;
+import esw.learn.mvvmapplication.api.RetrofitClient;
+import esw.learn.mvvmapplication.api.TvResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
