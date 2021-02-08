@@ -13,7 +13,7 @@ public interface Api {
 
     @GET("show-details")
     Call<TvShowResponse> getTvShowDetails (
-            @Query("q") int q
+            @Query("q") String q
     );
 
     @GET("search")

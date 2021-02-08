@@ -6,17 +6,20 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import esw.learn.mvvmapplication.adapters.TvShowAdapter;
+import esw.learn.mvvmapplication.listeners.TvShowListener;
 import esw.learn.mvvmapplication.models.TvShow;
+import esw.learn.mvvmapplication.utilities.Common;
 import esw.learn.mvvmapplication.viewmodels.TvShowViewModel;
 import esw.learn.mvvmapplication.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TvShowListener {
 
     //activity binding
     private ActivityMainBinding activityMainBinding;
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         tvShowViewModel = new ViewModelProvider(this).get(TvShowViewModel.class);
 
         //set adapter
-        adapter = new TvShowAdapter(tvShowList);
+        adapter = new TvShowAdapter(tvShowList, this);
         activityMainBinding.tvListRecycler.setAdapter(adapter);
 
         //add scroll listener
@@ -116,6 +119,20 @@ public class MainActivity extends AppCompatActivity {
                 activityMainBinding.setIsLoadingMore(true);
             }
         }
+
+    }
+
+    @Override
+    public void onTvShowClicked(TvShow tvShow) {
+
+        Intent detailsIntent = new Intent(MainActivity.this, ShowDetails.class);
+        detailsIntent.putExtra(Common.INTENT_SHOW_ID, tvShow.getId());
+        detailsIntent.putExtra(Common.INTENT_SHOW_NAME, tvShow.getName());
+        detailsIntent.putExtra(Common.INTENT_SHOW_START, tvShow.getStartDate());
+        detailsIntent.putExtra(Common.INTENT_SHOW_COUNTRY, tvShow.getCountry());
+        detailsIntent.putExtra(Common.INTENT_SHOW_NETWORK, tvShow.getNetwork());
+        detailsIntent.putExtra(Common.INTENT_SHOW_STATUS, tvShow.getStatus());
+        startActivity(detailsIntent);
 
     }
 }
