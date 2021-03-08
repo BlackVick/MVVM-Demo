@@ -6,4 +6,6 @@
     <string name="dot">•</string>
     <string name="website">Website</string>
     <string name="episodes">Episodes</string>
+    <string name="add_to_watchlist">Add to watchlist</string>
+    <string name="watchlist">WatchList</string>
 </resources>

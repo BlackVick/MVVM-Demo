@@ -126,12 +126,7 @@ public class MainActivity extends AppCompatActivity implements TvShowListener {
     public void onTvShowClicked(TvShow tvShow) {
 
         Intent detailsIntent = new Intent(MainActivity.this, ShowDetails.class);
-        detailsIntent.putExtra(Common.INTENT_SHOW_ID, tvShow.getId());
-        detailsIntent.putExtra(Common.INTENT_SHOW_NAME, tvShow.getName());
-        detailsIntent.putExtra(Common.INTENT_SHOW_START, tvShow.getStartDate());
-        detailsIntent.putExtra(Common.INTENT_SHOW_COUNTRY, tvShow.getCountry());
-        detailsIntent.putExtra(Common.INTENT_SHOW_NETWORK, tvShow.getNetwork());
-        detailsIntent.putExtra(Common.INTENT_SHOW_STATUS, tvShow.getStatus());
+        detailsIntent.putExtra("tvShow", tvShow);
         startActivity(detailsIntent);
 
     }
