@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import esw.learn.mvvmapplication.database.TVShowsDatabase;
 import esw.learn.mvvmapplication.models.TvShow;
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 import java.util.List;
@@ -21,5 +22,9 @@ public class WatchListViewModel extends AndroidViewModel {
 
     public Flowable<List<TvShow>> loadWatchlist(){
         return tvShowsDatabase.tvShowDao().getWatchList();
+    }
+
+    public Completable removeTvShowFromWatchlist(TvShow tvShow){
+        return tvShowsDatabase.tvShowDao().removeFromWatchList(tvShow);
     }
 }
