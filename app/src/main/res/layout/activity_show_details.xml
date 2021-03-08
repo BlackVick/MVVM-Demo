@@ -9,6 +9,42 @@
                 name="isLoading"
                 type="Boolean"/>
 
+        <variable
+                name="tvShowImageUrl"
+                type="String"/>
+
+        <variable
+                name="tvShowName"
+                type="String"/>
+
+        <variable
+                name="networkCountry"
+                type="String"/>
+
+        <variable
+                name="status"
+                type="String"/>
+
+        <variable
+                name="startedDate"
+                type="String"/>
+
+        <variable
+                name="description"
+                type="String"/>
+
+        <variable
+                name="rating"
+                type="String"/>
+
+        <variable
+                name="genre"
+                type="String"/>
+
+        <variable
+                name="runtime"
+                type="String"/>
+
         <import type="android.view.View"/>
 
     </data>
@@ -20,31 +56,305 @@
             android:background="@color/colorPrimary"
             tools:context=".ShowDetails">
 
-        <androidx.viewpager2.widget.ViewPager2
+        <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:id="@+id/imageViewPager"
-                android:orientation="horizontal"
-                android:visibility="gone"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_height="match_parent"
+                android:scrollbars="none">
 
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/viewFadingEdge"
-                android:background="@drawable/background_fading_edge"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/sliderIndicator"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/viewFadingEdge"/>
+                <androidx.viewpager2.widget.ViewPager2
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:id="@+id/imageViewPager"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:id="@+id/viewFadingEdge"
+                        android:background="@drawable/background_fading_edge"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"/>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/sliderIndicator"
+                        android:gravity="end|center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/viewFadingEdge"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageTvShow"/>
+
+                <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:id="@+id/imageBack"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/background_back_button"
+                        android:contentDescription="@string/app_name"
+                        android:padding="3dp"
+                        android:src="@drawable/ic_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorTextIcons"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="100dp"
+                        android:layout_height="150dp"
+                        android:id="@+id/imageTvShow"
+                        android:layout_marginStart="10dp"
+                        android:scaleType="centerCrop"
+                        android:imageURL="@{tvShowImageUrl}"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageViewPager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewPager"
+                        app:riv_corner_radius="6dp"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textName"
+                        android:layout_marginStart="8dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@{tvShowName}"
+                        android:textColor="@color/colorTextIcons"
+                        android:textSize="14sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageTvShow"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewPager"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textNetworkCountry"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@{networkCountry}"
+                        android:textColor="@color/colorTextOther"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@id/textName"
+                        app:layout_constraintStart_toStartOf="@id/textName"
+                        app:layout_constraintTop_toBottomOf="@id/textName"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textStatus"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@{status}"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@id/textName"
+                        app:layout_constraintStart_toStartOf="@id/textName"
+                        app:layout_constraintTop_toBottomOf="@id/textNetworkCountry"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textStarted"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text='@{"Started on: " + startedDate}'
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@id/textName"
+                        app:layout_constraintStart_toStartOf="@id/textName"
+                        app:layout_constraintTop_toBottomOf="@id/textStatus"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textDescription"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="2dp"
+                        android:maxLines="4"
+                        android:text="@{description}"
+                        android:textColor="@color/colorTextIcons"
+                        android:textSize="@dimen/_11ssp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/imageTvShow"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textReadMore"
+                        android:layout_marginTop="3dp"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:text="@string/read_more"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/textDescription"
+                        app:layout_constraintStart_toStartOf="@id/textDescription"/>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:id="@+id/viewDivider1"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/colorTextSecondary"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/textReadMore"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/layoutMisc"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@+id/viewDivider1"
+                        android:visibility="gone">
+
+                    <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/ic_star"
+                            app:tint="@color/colorTextOther"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textRating"
+                            android:layout_marginStart="5dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:includeFontPadding="false"
+                            android:text="@{rating}"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="12sp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:includeFontPadding="false"
+                            android:text="@string/dot"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="13sp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textGenre"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:includeFontPadding="false"
+                            android:text="@{genre}"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="12sp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:includeFontPadding="false"
+                            android:text="@string/dot"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="13sp"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textRuntime"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/proxima_nova"
+                            android:includeFontPadding="false"
+                            android:text="@{runtime}"
+                            android:textColor="@color/colorTextIcons"
+                            android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:id="@+id/viewDivider2"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorTextSecondary"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toBottomOf="@id/layoutMisc"/>
+                
+                <com.google.android.material.button.MaterialButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/buttonWebsite"
+                        android:layout_margin="8dp"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:text="@string/website"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:backgroundTint="@color/colorAccent"
+                        app:cornerRadius="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/buttonEpisodes"
+                        app:layout_constraintTop_toBottomOf="@id/viewDivider2"/>
+
+                <com.google.android.material.button.MaterialButton
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/buttonEpisodes"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/proxima_nova"
+                        android:includeFontPadding="false"
+                        android:text="@string/episodes"
+                        android:textColor="#212121"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        app:backgroundTint="@color/colorTextOther"
+                        app:cornerRadius="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/buttonWebsite"
+                        app:layout_constraintTop_toBottomOf="@id/viewDivider2"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
         <ProgressBar
                 android:layout_width="25dp"
