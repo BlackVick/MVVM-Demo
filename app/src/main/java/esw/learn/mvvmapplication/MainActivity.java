@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity implements TvShowListener {
             }
         });
 
+        //watchlist
+        activityMainBinding.tvWatchList.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), WatchList.class));
+        });
+
         //get tv shows
         getTvShows();
     }
