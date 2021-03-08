@@ -2,34 +2,34 @@ package esw.learn.mvvmapplication.models;
 
 public class EpisodeData {
 
-    private int season;
-    private int episode;
+    private String season;
+    private String episode;
     private String name;
     private String air_date;
 
     public EpisodeData() {
     }
 
-    public EpisodeData(int season, int episode, String name, String air_date) {
+    public EpisodeData(String season, String episode, String name, String air_date) {
         this.season = season;
         this.episode = episode;
         this.name = name;
         this.air_date = air_date;
     }
 
-    public int getSeason() {
+    public String getSeason() {
         return season;
     }
 
-    public void setSeason(int season) {
+    public void setSeason(String season) {
         this.season = season;
     }
 
-    public int getEpisode() {
+    public String getEpisode() {
         return episode;
     }
 
-    public void setEpisode(int episode) {
+    public void setEpisode(String episode) {
         this.episode = episode;
     }
 
